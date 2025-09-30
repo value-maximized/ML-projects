@@ -1,6 +1,6 @@
-# ## 🚀 Machine Learning Projects 
+## 🚀 Machine Learning Projects 
 
-A curated list of **ML projects** ordered from **beginner → advanced**, with **use cases, datasets, and tools**.  
+A curated list of **ML projects** with **use cases, datasets, and tools**.  
 
 
 ## 🟢 Completed Projects
