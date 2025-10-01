@@ -275,7 +275,7 @@ The model achieves approximately **60-70% accuracy** on the CIFAR-10 test set af
 ### Training from Scratch
 
 ```bash
-python cifar10_classifier.py
+python main.py
 ```
 
 ### Using Pre-trained Model
@@ -299,7 +299,7 @@ net.eval()
 
 ```
 .
-├── cifar10_classifier.py    # Main script
+├── main.py    # Main script
 ├── trained_net.pth          # Saved model weights
 ├── data/                    # CIFAR-10 dataset (auto-downloaded)
 │   └── cifar-10-batches-py/
@@ -316,7 +316,7 @@ MIT License
 
 - CIFAR-10 dataset created by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton
 - PyTorch framework by Meta AI
-- [Image Classification CNN in PyTorch]([url](https://www.youtube.com/watch?v=CtzfbUwrYGI))
+- [YouTube NeuralNine - Image Classification CNN in PyTorch]([url](https://www.youtube.com/watch?v=CtzfbUwrYGI))
 ---
 
 **Note**: Make sure to create an `image/` directory with sample images before running the prediction section.
