@@ -22,8 +22,9 @@ A PyTorch implementation of a Convolutional Neural Network for classifying image
 - [File Structure](#file-structure)
 
 ## 🎯 Overview
+Think of this model as a **visual recognition system** that learns to identify objects in images. It takes a 32×32 color photo and outputs one of 10 categories (plane, car, bird, etc.).
 
-This project implements a Convolutional Neural Network (CNN) to classify images into 10 categories: planes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks.
+This Convolutional Neural Network (CNN) can be used to classify images into 10 categories: planes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks.
 
 ## 📊 Dataset
 
@@ -45,6 +46,90 @@ This project implements a Convolutional Neural Network (CNN) to classify images 
 8. Horse
 9. Ship
 10. Truck
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Data Flow
+<img width="2000" height="1545" alt="How-To graphic" src="https://github.com/user-attachments/assets/96c3b38a-a442-4895-9d6c-d52ec390e6eb" />
+
+## Core Components
+
+### 1. Input Layer
+- **What it receives**: 32×32 pixel RGB image
+- **Shape**: 3 channels (Red, Green, Blue) × 32 × 32 = 3,072 values
+- **Think of it as**: A grid of colored dots that the computer can read
+
+### 2. Convolutional Layers (Feature Extractors)
+**Conv Layer 1**: Detects basic patterns
+- Scans image with 12 different 5×5 filters
+- Each filter looks for simple features (edges, corners, colors)
+- Output: 12 feature maps showing where patterns were found
+
+**Conv Layer 2**: Detects complex patterns
+- Takes the 12 feature maps and applies 24 new 5×5 filters
+- Combines simple features into complex ones (eyes, wheels, wings)
+- Output: 24 feature maps with higher-level patterns
+
+### 3. Pooling Layers (Size Reducers)
+- **Purpose**: Shrink the data while keeping important information
+- **How**: Takes a 2×2 grid and keeps only the maximum value
+- **Result**: Image size cut in half, but key features remain
+- Applied after each convolutional layer
+
+### 4. Fully Connected Layers (Decision Makers)
+**FC Layer 1**: 600 → 120 neurons
+- Flattens all feature maps into a single list
+- Starts combining features into meaningful patterns
+
+**FC Layer 2**: 120 → 84 neurons
+- Further refines the understanding
+
+**FC Layer 3 (Output)**: 84 → 10 neurons
+- Final decision: one score for each of the 10 classes
+- Highest score = predicted class
+
+### 5. Activation Function (ReLU)
+- **Purpose**: Adds non-linearity so the network can learn complex patterns
+- **What it does**: Keeps positive numbers, turns negatives to zero
+- Applied after every layer except the output
+
+---
+
+## Training Process
+
+1. **Forward Pass**: Image goes through all layers to get a prediction
+2. **Calculate Error**: Compare prediction to correct answer
+3. **Backward Pass**: Adjust all weights to reduce error
+4. **Repeat**: Do this 50,000 times per epoch, for 30 epochs
+
+**Key Parameters**:
+- **Learning Rate** (0.001): How big each adjustment step is
+- **Momentum** (0.9): Helps avoid getting stuck in local minimums
+- **Batch Size** (32): Process 32 images before updating weights
+
+---
+
+## Why This Architecture Works
+
+**Convolutional layers** → Extract visual features efficiently (fewer parameters than fully connected)
+
+**Pooling layers** → Reduce computation and make model robust to small position changes
+
+**Multiple layers** → Build from simple features (edges) to complex ones (objects)
+
+**Fully connected layers** → Combine all features to make final classification decision
+
+---
+
+
+**Key Elements to Highlight**:
+- Input: 3×32×32 colored cube
+- Conv layers: Multiple small squares (filters)
+- Pooling: Shrinking effect with arrows
+- Flatten: 2D grid becoming 1D line
+- FC layers: Connected neurons (dots with lines)
+- Output: 10 nodes with labels
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 💻 Requirements
 
