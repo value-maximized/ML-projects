@@ -48,8 +48,23 @@ This Convolutional Neural Network (CNN) can be used to classify images into 10 c
 10. Truck
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 🏗️ Model Architecture
+
+| Layer | Type | Input | Output | Kernel Size |
+|-------|------|-------|--------|-------------|
+| Conv1 | Convolutional | 3 | 12 | 5×5 |
+| Pool1 | Max Pooling | - | - | 2×2 |
+| Conv2 | Convolutional | 12 | 24 | 5×5 |
+| Pool2 | Max Pooling | - | - | 2×2 |
+| FC1 | Fully Connected | 600 | 120 | - |
+| FC2 | Fully Connected | 120 | 84 | - |
+| FC3 | Output | 84 | 10 | - |
+
+**Activation Function**: ReLU
+
 ## Data Flow
-<img width="2000" height="1545" alt="How-To graphic" src="https://github.com/user-attachments/assets/96c3b38a-a442-4895-9d6c-d52ec390e6eb" />
+<img width="2000" height="1545" alt="How-To graphic (1)" src="https://github.com/user-attachments/assets/251e012e-ac83-4f3d-834e-8cb076baeeab" />
 
 ## Core Components
 
@@ -92,43 +107,6 @@ This Convolutional Neural Network (CNN) can be used to classify images into 10 c
 - **What it does**: Keeps positive numbers, turns negatives to zero
 - Applied after every layer except the output
 
----
-
-## Training Process
-
-1. **Forward Pass**: Image goes through all layers to get a prediction
-2. **Calculate Error**: Compare prediction to correct answer
-3. **Backward Pass**: Adjust all weights to reduce error
-4. **Repeat**: Do this 50,000 times per epoch, for 30 epochs
-
-**Key Parameters**:
-- **Learning Rate** (0.001): How big each adjustment step is
-- **Momentum** (0.9): Helps avoid getting stuck in local minimums
-- **Batch Size** (32): Process 32 images before updating weights
-
----
-
-## Why This Architecture Works
-
-**Convolutional layers** → Extract visual features efficiently (fewer parameters than fully connected)
-
-**Pooling layers** → Reduce computation and make model robust to small position changes
-
-**Multiple layers** → Build from simple features (edges) to complex ones (objects)
-
-**Fully connected layers** → Combine all features to make final classification decision
-
----
-
-
-**Key Elements to Highlight**:
-- Input: 3×32×32 colored cube
-- Conv layers: Multiple small squares (filters)
-- Pooling: Shrinking effect with arrows
-- Flatten: 2D grid becoming 1D line
-- FC layers: Connected neurons (dots with lines)
-- Output: 10 nodes with labels
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 💻 Requirements
@@ -146,19 +124,6 @@ pillow
 pip install torch torchvision numpy pillow
 ```
 
-## 🏗️ Model Architecture
-
-| Layer | Type | Input | Output | Kernel Size |
-|-------|------|-------|--------|-------------|
-| Conv1 | Convolutional | 3 | 12 | 5×5 |
-| Pool1 | Max Pooling | - | - | 2×2 |
-| Conv2 | Convolutional | 12 | 24 | 5×5 |
-| Pool2 | Max Pooling | - | - | 2×2 |
-| FC1 | Fully Connected | 600 | 120 | - |
-| FC2 | Fully Connected | 120 | 84 | - |
-| FC3 | Output | 84 | 10 | - |
-
-**Activation Function**: ReLU
 
 ## 📝 Step-by-Step Implementation
 
